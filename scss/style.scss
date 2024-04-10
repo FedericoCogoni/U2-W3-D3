@@ -1,0 +1,19 @@
+@import "./partials/bootstrap-overrides";
+* {
+  font-size: 20px;
+  font-family: Roboto, "sans serif";
+}
+.card {
+  width: 18rem;
+}
+.card img {
+  object-fit: cover;
+  height: 450px;
+}
+.card-body {
+  height: 230px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
