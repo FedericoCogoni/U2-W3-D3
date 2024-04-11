@@ -25,17 +25,17 @@ document.addEventListener("DOMContentLoaded", function () {
       arrayOfBooks.forEach(bookInTheArray => {
         const bookBox = document.createElement("div")
         bookBox.className =
-          "book-box col book d-flex col-12 col-sm-6 col-md-4 col-lg-3 g-3"
+          "book-box col justify-content-center  book d-flex col-12 col-sm-6 col-lg-4 col-xl-3 g-3 overflow-hidden"
 
         const book = document.createElement("div")
         book.className = "card h-100"
 
         const bookInfo = document.createElement("div")
         bookInfo.className =
-          "card-body d-flex flex-column justify-content-between w-75"
+          "card-body  d-flex fit-content align-items-start flex-column justify-content-around"
 
         const cardButtons = document.createElement("div")
-        cardButtons.className = "card-buttons d-flex w-75"
+        cardButtons.className = "card-buttons d-flex mt-1 w-100"
 
         const buttonHide = document.createElement("button")
         buttonHide.className = "btn btn-outline-secondary col button-hide"
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (bookInTheArray.title) {
           const h5 = document.createElement("h5")
-          h5.className = "book-title card-title my-0"
+          h5.className = "book-title text-md-5 card-title my-0"
           h5.textContent = bookInTheArray.title
           bookInfo.appendChild(h5)
         }
@@ -97,7 +97,9 @@ document.addEventListener("DOMContentLoaded", function () {
           const bookData = {
             title: bookBox.querySelector(".book-title").textContent,
             price: parseFloat(bookBox.querySelector(".book-price").textContent),
+            asin: bookBox.querySelector(".book-asin").textContent,
           }
+          console.log(bookData)
           addToCart(bookData)
         })
       })
@@ -108,13 +110,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const thisCard = this.closest(".book-box")
     thisCard.classList.add("d-none")
   }
-
+  const cart = []
+  let total = 0
   function addToCart(book) {
     cart.push(book)
     total += book.price
     updateCartTotal()
+    saveCartToStorage()
   }
-
+  function saveCartToStorage() {
+    localStorage.setItem("cart", JSON.stringify(cart))
+    localStorage.setItem("total", total)
+  }
   function updateCartTotal() {
     const cartTotalElement = document.getElementById("cart-total")
     cartTotalElement.textContent = total + "€"

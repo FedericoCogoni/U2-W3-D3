@@ -11965,10 +11965,6 @@ textarea.form-control-lg {
   font-family: Roboto, "sans serif";
 }
 
-.card {
-  width: 18rem;
-}
-
 .card img {
   -o-object-fit: cover;
      object-fit: cover;
@@ -11976,9 +11972,5 @@ textarea.form-control-lg {
 }
 
 .card-body {
-  height: 230px;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  max-width: 400px;
 }/*# sourceMappingURL=style.css.map */
